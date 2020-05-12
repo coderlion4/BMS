@@ -22,7 +22,11 @@ router.beforeEach((to, from, next) => {
 
   // 获取 token
   const tokenStr = window.sessionStorage.getItem('token')
+
+  // 未登陆
   if (!tokenStr) return next('/login')
+
+  // 放行
   next()
 })
 
