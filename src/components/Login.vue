@@ -60,7 +60,7 @@ export default {
           {
             min: 3,
             max: 10,
-            message: '长度在 3 到 10 个字符',
+            message: '用户名的长度在 3 到 10 个字符',
             trigger: 'blur'
           }
         ],
@@ -74,7 +74,7 @@ export default {
           {
             min: 6,
             max: 15,
-            message: '长度在 6 到 15 个字符',
+            message: '密码的长度在 6 到 15 个字符',
             trigger: 'blur'
           }
         ]
@@ -98,9 +98,8 @@ export default {
 
         // 登陆请求
         const { data: res } = await this.$http.post('login', this.loginForm)
-        if (res.meta.status !== 200)
-          return this.$message.error('你输入的帐号或密码不正确，请重新输入。')
-        this.$message.success('登陆成功。')
+        if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+        this.$message.success(res.meta.msg)
 
         // 1. 将登陆成功后的 token 保存到客户端的 sessionStorage 中
         //   1.1 项目中除了登陆之外的其他API接口，必须在登陆之后才能访问

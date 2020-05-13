@@ -24,6 +24,7 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           :router="true"
+          :default-active="$route.path"
         >
           <!-- 一级菜单 -->
           <el-submenu
@@ -65,7 +66,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      menuList: [],
+      menuList: [], // 菜单数据
       iconsList: [
         'icon-user',
         'icon-tijikongjian',
@@ -73,7 +74,7 @@ export default {
         'icon-danju',
         'icon-baobiao'
       ],
-      isCollapse: false
+      isCollapse: false // 菜单是否折叠
     }
   },
   created() {
@@ -95,8 +96,6 @@ export default {
     async getMenuList() {
       const { data: res } = await this.$http.get('menus')
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
-      console.log(res)
-
       this.menuList = res.data
     },
 
