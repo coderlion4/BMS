@@ -3,17 +3,30 @@
     <div class="login-box">
       <!-- 头像区域 -->
       <div class="avatar-box">
-        <img src="~assets/logo.png" alt />
+        <img src="~assets/logo.png" alt="" />
       </div>
       <!-- 表单区域 -->
-      <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login-form">
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        :rules="loginFormRules"
+        label-width="0px"
+        class="login-form"
+      >
         <!-- 用户名 -->
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user" />
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"
+          />
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
-          <el-input v-model="loginForm.password" prefix-icon="iconfont icon-password-b" type="password" />
+          <el-input
+            v-model="loginForm.password"
+            prefix-icon="iconfont icon-password-b"
+            type="password"
+          />
         </el-form-item>
         <!-- 按钮 -->
         <el-form-item class="btns">
@@ -85,7 +98,8 @@ export default {
 
         // 登陆请求
         const { data: res } = await this.$http.post('login', this.loginForm)
-        if (res.meta.status !== 200) return this.$message.error('你输入的帐号或密码不正确，请重新输入。')
+        if (res.meta.status !== 200)
+          return this.$message.error('你输入的帐号或密码不正确，请重新输入。')
         this.$message.success('登陆成功。')
 
         // 1. 将登陆成功后的 token 保存到客户端的 sessionStorage 中
