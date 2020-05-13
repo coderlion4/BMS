@@ -34,7 +34,7 @@
           >
             <!-- 一级菜单模版 -->
             <template slot="title">
-              <i :class="iconsList[index]" class="iconfont"></i>
+              <i :class="['iconfont', iconsList[index]]"></i>
               <span>{{ item.authName }}</span>
             </template>
 
@@ -95,7 +95,11 @@ export default {
      */
     async getMenuList() {
       const { data: res } = await this.$http.get('menus')
-      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+
       this.menuList = res.data
     },
 
