@@ -225,7 +225,6 @@ export default {
         this.$message.error('请先选择商品分类')
         return false
       }
-      return true
     },
 
     async tabClicked() {
