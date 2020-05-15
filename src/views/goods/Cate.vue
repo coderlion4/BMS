@@ -217,7 +217,7 @@ export default {
         cat_name: [
           {
             required: true,
-            message: '请输入分类名称',
+            message: '分类名称不能为空',
             trigger: 'blur'
           }
         ]
