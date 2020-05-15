@@ -447,20 +447,20 @@ export default {
         }
       ).catch(err => err)
 
-      if (confirmResult === 'confirm') {
-        // 确定删除
-        const { data: res } = await this.$http.delete('users/' + id)
-
-        if (res.meta.status !== 200) {
-          return this.$message.error(res.meta.msg)
-        }
-
-        this.getUserList()
-        this.$message.success('删除成功！')
-      } else if (confirmResult === 'cancel') {
+      if (confirmResult === 'cancel') {
         // 取消删除
         return this.$message.info('已取消删除')
       }
+
+      // 确定删除
+      const { data: res } = await this.$http.delete('users/' + id)
+
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+
+      this.getUserList()
+      this.$message.success('删除成功！')
     },
 
     /**

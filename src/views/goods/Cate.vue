@@ -11,9 +11,9 @@
     <el-card>
       <el-row>
         <el-col>
-          <el-button type="primary" @click="showAddCateDialog"
-            >添加分类</el-button
-          >
+          <el-button type="primary" @click="showAddCateDialog">
+            添加分类
+          </el-button>
         </el-col>
       </el-row>
 
@@ -107,7 +107,6 @@
         </el-form-item>
         <el-form-item label="父级分类：">
           <el-cascader
-            expand-trigger="hover"
             :options="parentCateList"
             :props="cascaderProps"
             v-model="selectedKeys"
@@ -208,6 +207,7 @@ export default {
         value: 'cat_id',
         label: 'cat_name',
         children: 'children',
+        expandTrigger: 'hover',
         checkStrictly: true
       },
       selectedKeys: [], // 选中的父级分类的 id 列表
@@ -390,20 +390,20 @@ export default {
         }
       ).catch(err => err)
 
-      if (confirmResult === 'confirm') {
-        // 确定删除
-        const { data: res } = await this.$http.delete('categories/' + id)
-
-        if (res.meta.status !== 200) {
-          return this.$message.error(res.meta.msg)
-        }
-
-        this.getCateList()
-        this.$message.success('删除成功！')
-      } else if (confirmResult === 'cancel') {
+      if (confirmResult === 'cancel') {
         // 取消删除
         return this.$message.info('已取消删除')
       }
+
+      // 确定删除
+      const { data: res } = await this.$http.delete('categories/' + id)
+
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+
+      this.getCateList()
+      this.$message.success('删除成功！')
     }
   }
 }

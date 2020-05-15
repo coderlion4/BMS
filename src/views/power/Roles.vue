@@ -332,19 +332,19 @@ export default {
         }
       ).catch(err => err)
 
-      if (confirmResult === 'confirm') {
-        // 确定删除
-        const { data: res } = await this.$http.delete('roles/' + id)
-
-        if (res.meta.status !== 200) {
-          return this.$message.error(res.meta.msg)
-        }
-        this.getRolesList()
-        this.$message.success('删除成功！')
-      } else if (confirmResult === 'cancel') {
+      if (confirmResult === 'cancel') {
         // 取消删除
         return this.$message.info('已取消删除')
       }
+
+      // 确定删除
+      const { data: res } = await this.$http.delete('roles/' + id)
+
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+      this.getRolesList()
+      this.$message.success('删除成功！')
     },
 
     /**
@@ -362,21 +362,21 @@ export default {
         }
       ).catch(err => err)
 
-      if (confirmResult === 'confirm') {
-        // 确定删除
-        const { data: res } = await this.$http.delete(
-          `roles/${role.id}/rights/${rightId}`
-        )
-
-        if (res.meta.status !== 200) {
-          return this.$message.error(res.meta.msg)
-        }
-        role.children = res.data
-        this.$message.success('删除成功！')
-      } else if (confirmResult === 'cancel') {
+      if (confirmResult === 'cancel') {
         // 取消删除
         return this.$message.info('已取消删除')
       }
+
+      // 确定删除
+      const { data: res } = await this.$http.delete(
+        `roles/${role.id}/rights/${rightId}`
+      )
+
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+      role.children = res.data
+      this.$message.success('删除成功！')
     },
 
     /**
