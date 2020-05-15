@@ -12,9 +12,9 @@
       <!-- 添加角色区域 -->
       <el-row>
         <el-col>
-          <el-button type="primary" @click="addDialogVisible = true"
-            >添加角色</el-button
-          >
+          <el-button type="primary" @click="addDialogVisible = true">
+            添加角色
+          </el-button>
         </el-col>
       </el-row>
 
@@ -29,11 +29,9 @@
             >
               <!-- 渲染一级权限 -->
               <el-col :span="5">
-                <el-tag
-                  closable
-                  @close="removeRightById(scope.row, item1.id)"
-                  >{{ item1.authName }}</el-tag
-                >
+                <el-tag closable @close="removeRightById(scope.row, item1.id)">
+                  {{ item1.authName }}
+                </el-tag>
                 <i class="el-icon-caret-right" />
               </el-col>
 
@@ -49,8 +47,9 @@
                       type="success"
                       closable
                       @close="removeRightById(scope.row, item2.id)"
-                      >{{ item2.authName }}</el-tag
                     >
+                      {{ item2.authName }}
+                    </el-tag>
                     <i class="el-icon-caret-right" />
                   </el-col>
                   <el-col :span="18">
@@ -60,8 +59,9 @@
                       :key="item3.id"
                       closable
                       @close="removeRightById(scope.row, item3.id)"
-                      >{{ item3.authName }}</el-tag
                     >
+                      {{ item3.authName }}
+                    </el-tag>
                   </el-col>
                 </el-row>
               </el-col>
@@ -78,23 +78,26 @@
               icon="el-icon-edit"
               size="mini"
               @click="showEditDialog(scope.row.id)"
-              >编辑</el-button
             >
+              编辑
+            </el-button>
             <el-button
               type="danger"
               icon="el-icon-delete"
               size="mini"
               @click="removeRoleById(scope.row.id)"
-              >删除</el-button
             >
+              删除
+            </el-button>
 
             <el-button
               type="warning"
               icon="el-icon-setting"
               size="mini"
               @click="showSetRightDialog(scope.row)"
-              >分配权限</el-button
             >
+              分配权限
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -174,7 +177,7 @@
         default-expand-all
         :default-checked-keys="defKeys"
         ref="treeRef"
-      ></el-tree>
+      />
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="setRightDialogVisble = false">取 消</el-button>

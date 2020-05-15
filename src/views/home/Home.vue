@@ -34,7 +34,7 @@
           >
             <!-- 一级菜单模版 -->
             <template slot="title">
-              <i :class="['iconfont', iconsList[index]]"></i>
+              <i :class="['iconfont', iconsList[index]]" />
               <span>{{ item.authName }}</span>
             </template>
 
@@ -45,7 +45,7 @@
               :key="subItem.id"
             >
               <template slot="title">
-                <i class="el-icon-menu"></i>
+                <i class="el-icon-menu" />
                 <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
