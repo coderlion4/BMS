@@ -214,7 +214,7 @@ export default {
         roleName: [
           {
             required: true,
-            message: '请输入手机号码',
+            message: '角色名称不能为空',
             trigger: 'blur'
           }
         ]
