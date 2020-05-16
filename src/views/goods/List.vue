@@ -11,17 +11,8 @@
     <el-card>
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input
-            placeholder="请输入内容"
-            v-model="queryInfo.query"
-            clearable
-            @clear="getGoodsList"
-          >
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="getGoodsList"
-            />
+          <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="getGoodsList">
+            <el-button slot="append" icon="el-icon-search" @click="getGoodsList" />
           </el-input>
         </el-col>
         <el-col :span="4">
@@ -32,16 +23,10 @@
       <el-table :data="goodsList" border stripe>
         <el-table-column type="index" label="#" />
         <el-table-column label="商品名称" prop="goods_name" />
-        <el-table-column
-          label="商品价格（元）"
-          prop="goods_price"
-          width="95px"
-        />
+        <el-table-column label="商品价格（元）" prop="goods_price" width="95px" />
         <el-table-column label="商品重量" prop="goods_weight" width="70px" />
         <el-table-column label="创建时间" prop="add_time" width="140px">
-          <template slot-scope="scope">
-            {{ scope.row.add_time | dateFormat }}
-          </template>
+          <template slot-scope="scope">{{ scope.row.add_time | dateFormat }}</template>
         </el-table-column>
         <el-table-column label="操作" width="130px">
           <template slot-scope="scope">
@@ -71,23 +56,12 @@
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
         background
-      >
-      </el-pagination>
+      ></el-pagination>
     </el-card>
 
     <!-- 修改商品对话框 -->
-    <el-dialog
-      title="修改商品"
-      :visible.sync="editDialogVisible"
-      width="50%"
-      @close="eidtDialogClosed"
-    >
-      <el-form
-        :model="editForm"
-        :rules="editFormRules"
-        ref="editFormRef"
-        label-width="80px"
-      >
+    <el-dialog title="修改商品" :visible.sync="editDialogVisible" width="50%" @close="eidtDialogClosed">
+      <el-form :model="editForm" :rules="editFormRules" ref="editFormRef" label-width="80px">
         <el-form-item label="商品名称" prop="goods_name">
           <el-input v-model="editForm.goods_name" />
         </el-form-item>

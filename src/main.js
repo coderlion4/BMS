@@ -24,6 +24,7 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 
 Vue.filter('dateFormat', function(originVal) {
+  originVal *= 1000
   const dt = new Date(originVal)
   const year = dt.getFullYear()
   const month = (dt.getMonth() + 1 + '').padStart(2, '0')
